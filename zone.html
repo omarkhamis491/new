@@ -1,0 +1,1453 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <title>Document</title>
+    
+    <style>
+     
+     
+
+
+
+.btn-secondary.active {
+    background-color: blue;
+}
+.w3-blue {
+   color: rgb(50, 149, 189);
+}
+    
+      .Offers_section__5Ts_R {
+    height: 440px;
+    background-color: #21d3d6;
+    overflow: hidden;
+    overflow: scroll;
+}
+   
+
+
+
+
+    .dot.active {
+      background: #333;
+    }
+    
+          
+        .image4 {
+            flex: 0;
+        }
+        .image4 img {
+           
+            height: auto;
+        }
+       .card {
+           
+            background: white;
+          
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         
+        }
+
+        .card:hover {
+           
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Content section comes first in the layout */
+      
+
+        /* Image container placed after content */
+       
+
+         /* Hide container on screens smaller than 768px */
+         @media (max-width: 767px) {
+            .responsive-hidden {
+                display: none;
+            }
+        }
+        
+        /* Show container on screens larger than 768px */
+        @media (min-width: 768px) {
+            .responsive-hidden {
+                display: block;
+            }
+        }
+
+        
+     
+          .img1{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.img2{
+    height: 80%;
+    width: 20%;
+    border-radius: 80%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+        .icon-text {
+      display: flex;
+      align-items: center;
+      color: #72d1e9;
+    }
+    .icon-text i {
+      margin-right: 8px;
+    }
+        .w3-blue{
+            
+      color: #138b8f !important;
+    
+        }
+    .calendar-container {
+      max-width: 400px;
+      margin: 30px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      w3-blue-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .calendar-header {
+      background-color: #f8f9fa;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .month-nav {
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #495057;
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      padding: 10px;
+    }
+    
+    .weekday-header {
+      text-align: center;
+      font-weight: bold;
+      padding: 10px 0;
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+    
+    .calendar-day {
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      w3-blue-radius: 4px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    
+    /* Today's date indicator */
+    .today {
+      font-weight: bold;
+    }
+    
+    .today::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      background-color: #0d6efd;
+      w3-blue-radius: 50%;
+    }
+    
+    /* Disabled dates */
+    .disabled {
+      color: #dee2e6;
+      cursor: not-allowed;
+      background-color: #f8f9fa;
+    }
+    
+    /* Selected date */
+    .selected {
+      background-color: #0d6efd;
+      color: white;
+    }
+    
+    /* Range selection indicators */
+    .range-start {
+      background-color: #0d6efd;
+      color: white;
+      w3-blue-radius: 4px 0 0 4px;
+    }
+    
+    .range-end {
+      background-color: #0d6efd;
+      color: white;
+      w3-blue-radius: 0 4px 4px 0;
+    }
+    
+    .in-range {
+      background-color: rgba(13, 110, 253, 0.2);
+    }
+    
+    /* Special event indicators */
+    .has-event::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 6px;
+      height: 6px;
+      background-color: #ff6b6b;
+      border-radius: 50%;
+    }
+    .icon-large {
+            font-size: 50px;
+          color: #0d6efd;
+    }
+   
+    /* Weekend indicator */
+    .weekend {
+      color: #ff6b6b;
+    }
+    .conk {
+      background-color: #138fa0;
+    }
+    /* Hover effects */
+    .calendar-day:not(.disabled):hover {
+      background-color: #e9ecef;
+    }
+    
+    /* Selection instructions */
+    .selection-instructions {
+      text-align: center;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #dee2e6;
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+    
+    /* Booking summary */
+    .booking-summary {
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #dee2e6;
+    }
+    
+    .booking-summary h5 {
+      margin-bottom: 15px;
+      color: #212529;
+    }
+    
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .key-info {
+      font-weight: 500;
+    }
+         .date-picker .disabled {
+    color: #ccc;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+      
+        .date-range-start {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50% 0 0 50%;
+  }
+  
+  /* End date (e.g., check-out) */
+  .date-range-end {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 0 50% 50% 0;
+  }
+  
+  /* Days in between */
+  .date-range-between {
+    background-color: rgba(13, 110, 253, 0.2);
+  }
+        .date-picker .selected-date {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50%;
+  }
+        .date-picker-container {
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          background-color: #fff;
+        
+        }
+       .p-solid {
+          border-style: solid;
+          border: 2px solid rgb(50, 129, 219);
+          border-radius: 25px;
+       
+        }
+      
+        
+      
+        
+        .daterangepicker td.active {
+          background-color: #0d6efd !important;
+        }
+        
+        .date-summary {
+          margin-top: 20px;
+          padding: 15px;
+          border-radius: 5px;
+          background-color: #f8f9fa;
+        }
+      </style>
+     
+    
+
+</head>
+<section>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <img src="./assets/zonemelogo-01.png" class="text-start" style="width: 10% ;height: 45px; " alt="">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  justify-content-center me-auto mb-2 flex-grow-1">
+          <li class="nav-item py-3 mt-3">
+            <a class="nav-link active" aria-current="page" href="#"> HOME</a>
+          </li>
+          <li class="nav-item py-3 mt-3">
+            <a class="nav-link" href="#"><strong>PROPERITY</strong></p></a>
+          </li>
+          <li class="nav-item py-3 mt-3">
+            <a class="nav-link" href="#"><strong>ABOUT US</strong></p></a>
+          </li>
+          <li class="nav-item py-3 mt-3 ">
+          <a class="nav-link" href="#"><strong>NEWS</strong></p></a>
+        </li>
+        </ul>
+        <ul class="nav ">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">ENGLISH</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">ARABIC</a></li>
+         
+          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><STRONG>JORDAN </STRONG></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item text-dark"  href="#">EGYBT</a></li>
+              <li><a class="dropdown-item text-dark" href="#">KSA</a></li>
+            </ul>
+          </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">ABOUT US</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link text-dark" href="#">NEWS</a>
+            </li>
+            </ul>
+          
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+        
+    
+</section>
+<div class="container mb-5 responsive-hidden ">
+ <div class="row justify-content-center p-solid  ">
+  <div class="input-group p-3 ">
+  
+    <div class="col-md-4  text-center ">
+      <input type="text" class="form-control rounded-pill " placeholder="select a date range ">
+    </div>
+    <div class="col-md-2 mx-3 text-center ">
+      <input type="text" class="form-control rounded-pill" placeholder="country ">
+    </div>
+    <div class="col-md-2 mx-3 text-center">
+      <input type="text" class="form-control rounded-pill" placeholder="city">
+  </div>
+      <div class="col-md-2 text-end">
+        <i class="bi bi-search icon-large"></i>
+      </div>
+  
+
+
+  </div>
+ </div>
+  
+  </div>
+  <section>
+     <div class="container">
+   
+        <img src="./assets/slider_mXkR48WUlw (1).png"  style=" height: 650px; width: 100%;  object-fit: cover;  "alt="">
+      </div>
+  
+  </section>
+<section>
+
+<div class="container mt-5 mb-5">
+  <div class="row mt-3 w-100 m-0">
+  
+            
+                  <div class="col-12 col-md-4 " >
+                    <h2 class="w3-blue">Book Your Second Home</h2>
+                    <p class="fs-3">Wherever your destination is, you will find your second home in every city in Saudi Arabia</p>
+                    <p>Book by property type</p>
+                </div>
+                  <div class="col-12 col-md-2 align-item-center" >
+                  <div class="card">
+                    <img src="./assets/category_89x5dbb8qr (1).svg" style="height: 200px; width: 100%;" alt="">
+                    <p class="card-content">Content for card 1</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2" >
+                  <div class="card ">
+                    <img src="./assets/category_89x5dbb8qr (1).svg" style="height: 200px; width: 100%;" alt="">
+                    <p class="card-content">Content for card 2</p>
+                  </div>
+                  </div>
+                  <div class="col-12 col-md-2 " >
+                  <div class="card">
+                    <img src="./assets/category_89x5dbb8qr (1).svg" style="height: 200px; width: 100%;" alt="">
+                    <p class="card-content">Content for card 3</p>
+                  </div>
+                </div>
+             
+              </div>
+              
+              
+            </div>
+    
+ 
+</section>
+
+<section>
+  
+ 
+</section>
+
+<section> 
+    <div class="container">
+        <div class="row w-100 m-0 ">
+            <div class="col-12 col-md-6">
+                <img src="./assets/150x150 (4)zone.png"  style="width: 100%; height: 77vh;">
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="text-bold">STYLISH LIVING</p>
+                <p class="fs-3 w3-blue">Your Sanctuary in the city: Where Amman Convenience Meets Serenity.</p>
+   <p>Embrace your sanctuary in Amman, where urban convenience meets serene tranquility. Amidst the citys pulse,
+     discover a haven of modern comforts and peaceful ambiance, inviting you to unwind and recharge.</p>
+     <div class="row w-100 m-0">
+ <div class="col-6 col-md-6 ">
+    <div class="icon-text">
+        <i class="bi bi-check-square-fill"></i>
+        <span>fast</span>
+      </div>
+      <div class="icon-text">
+        <i class="bi bi-check-square-fill"></i>
+        <span> Premium Proporties</span>
+      </div>
+      <div class="icon-text">
+        <i class="bi bi-check-square-fill"></i>
+        <span>Verified Agents</span>
+      </div>
+     
+ </div>
+ <div class="col-6 col-md-6 ">
+    <div class="icon-text">
+        <i class="bi bi-check-square-fill"></i>
+        <span>easy to use</span>
+      </div>
+      <div class="icon-text">
+        <i class="bi bi-check-square-fill"></i>
+        <span> guranteid experience</span>
+      </div>
+     
+     
+ </div>
+     </div>
+     <div class="row justify-content-center w-100 m-0">
+        <div class="col-12 col-md-6 text-center">
+            <button type="button" class="btn btn-outline-info">search proparity</button>
+            <button type="button" class="btn btn-outline-info">contact us</button>
+    </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+ <section>
+<div class="container">
+   <div class="row justify-content-center mt-4  w-100 m-0">
+    <p class="fs-4 text-center">LUXURY VILLAS</p>
+    <h3 class=" w3-blue text-center ">Explore Elevated Living.</h3>
+ 
+   
+   <div class="row w-100 m-0">
+    <div class="col-6  col-md-3 mt-1 text-center bg-muted ">
+        <div class="card " style=" ">
+           <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+            <div class="card-body">
+            <a href="#" >alphine vista chalet</a>
+ 
+            </div>
+            <div class="row w-100 m-0">
+            <div class="col-12 col-md-6">
+                <p class="">350JD</p>
+                <div class="icon-text">
+                   <img src="./download.png" style="">
+                    <span>bedrooms</span>
+
+                  </div>
+                  <div class="icon-text">
+                    <i class="bi bi-app"></i>
+                     <span>92SQFT</span>
+ 
+                  
+              </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="icon-text">
+                <i class="bi bi-geo-alt"></i>
+                 <span>92SQFT</span>
+
+          </div>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+</div>
+</div>
+</div>
+<div class="col-6 col-md-3 mt-1 text-center bg-muted ">
+    <div class="card " style=" ">
+       <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+        <div class="card-body">
+        <a href="#" >alphine vista chalet</a>
+
+        </div>
+        <div class="row w-100 m-0">
+        <div class="col-12 col-md-6">
+            <p class="">350JD</p>
+            <div class="icon-text">
+               <img src="./download.png" style="">
+                <span>bedrooms</span>
+
+              </div>
+              <div class="icon-text">
+                <i class="bi bi-app"></i>
+                 <span>92SQFT</span>
+
+              
+          </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="icon-text">
+            <i class="bi bi-geo-alt"></i>
+             <span>92SQFT</span>
+
+      </div>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-6  col-md-3 mt-1  text-center bg-muted ">
+    <div class="card " style=" ">
+       <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+        <div class="card-body">
+        <a href="#" >alphine vista chalet</a>
+
+        </div>
+        <div class="row w-100 m-0">
+        <div class="col-12 col-md-6">
+            <p class="">350JD</p>
+            <div class="icon-text">
+               <img src="./download.png" style="">
+                <span>bedrooms</span>
+
+              </div>
+              <div class="icon-text">
+                <i class="bi bi-app"></i>
+                 <span>92SQFT</span>
+
+              
+          </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="icon-text">
+            <i class="bi bi-geo-alt"></i>
+             <span>92SQFT</span>
+
+      </div>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-6  col-md-3 mt-1 text-center bg-muted ">
+    <div class="card " style=" ">
+       <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+        <div class="card-body">
+        <a href="#" >alphine vista chalet</a>
+
+        </div>
+        <div class="row w-100 m-0">
+        <div class="col-12 col-md-6">
+            <p class="">350JD</p>
+            <div class="icon-text">
+               <img src="./download.png" style="">
+                <span>bedrooms</span>
+
+              </div>
+              <div class="icon-text">
+                <i class="bi bi-app"></i>
+                 <span>92SQFT</span>
+
+              
+          </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="icon-text">
+            <i class="bi bi-geo-alt"></i>
+             <span>92SQFT</span>
+
+      </div>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+    </div>
+</div>
+</div>
+</div>
+    </div>
+   </div>
+   
+   <div class="row justify-content-center mt-4  w-100 m-0">
+   
+ 
+   
+   <div class="row w-100 m-0">
+    <div class="col-6  col-md-3 mt-1 text-center bg-muted ">
+        <div class="card " style=" ">
+           <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+            <div class="card-body">
+            <a href="#" >alphine vista chalet</a>
+ 
+            </div>
+            <div class="row w-100 m-0">
+            <div class="col-12 col-md-6">
+                <p class="">350JD</p>
+                <div class="icon-text">
+                   <img src="./download.png" style="">
+                    <span>bedrooms</span>
+
+                  </div>
+                  <div class="icon-text">
+                    <i class="bi bi-app"></i>
+                     <span>92SQFT</span>
+ 
+                  
+              </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="icon-text">
+                <i class="bi bi-geo-alt"></i>
+                 <span>92SQFT</span>
+
+          </div>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+</div>
+</div>
+</div>
+<div class="col-6  col-md-3 mt-1 text-center bg-muted ">
+  <div class="card " style=" ">
+     <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+      <div class="card-body">
+      <a href="#" >alphine vista chalet</a>
+
+      </div>
+      <div class="row w-100 m-0">
+      <div class="col-12 col-md-6">
+          <p class="">350JD</p>
+          <div class="icon-text">
+             <img src="./download.png" style="">
+              <span>bedrooms</span>
+
+            </div>
+            <div class="icon-text">
+              <i class="bi bi-app"></i>
+               <span>92SQFT</span>
+
+            
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="icon-text">
+          <i class="bi bi-geo-alt"></i>
+           <span>92SQFT</span>
+
+    </div>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+  </div>
+</div>
+</div>
+</div>
+<div class="col-6  col-md-3 mt-1  text-center bg-muted ">
+  <div class="card " style=" ">
+     <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+      <div class="card-body">
+      <a href="#" >alphine vista chalet</a>
+
+      </div>
+      <div class="row w-100 m-0">
+      <div class="col-12 col-md-6">
+          <p class="">350JD</p>
+          <div class="icon-text">
+             <img src="./download.png" style="">
+              <span>bedrooms</span>
+
+            </div>
+            <div class="icon-text">
+              <i class="bi bi-app"></i>
+               <span>92SQFT</span>
+
+            
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="icon-text">
+          <i class="bi bi-geo-alt"></i>
+           <span>92SQFT</span>
+
+    </div>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+  </div>
+</div>
+</div>
+</div>
+<div class="col-6  col-md-3 mt-1  text-center bg-muted ">
+  <div class="card " style=" ">
+     <img src="./assets/banner_3PR2vkByBk.png" style="width: 100%; object-fit: cover;"  alt="">
+      <div class="card-body">
+      <a href="#" >alphine vista chalet</a>
+
+      </div>
+      <div class="row w-100 m-0">
+      <div class="col-12 col-md-6">
+          <p class="">350JD</p>
+          <div class="icon-text">
+             <img src="./download.png" style="">
+              <span>bedrooms</span>
+
+            </div>
+            <div class="icon-text">
+              <i class="bi bi-app"></i>
+               <span>92SQFT</span>
+
+            
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="icon-text">
+          <i class="bi bi-geo-alt"></i>
+           <span>92SQFT</span>
+
+    </div>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+    <i class="bi bi-star-fill"></i>
+  </div>
+</div>
+</div>
+</div>
+    </div>
+   </div>
+</div>
+ </section>
+ <section class="Offers_section__5Ts_R mt-4 ">
+<div class="container mt-4">
+<div class="row  w-100 m-0 mt-4">
+  <div class="col-6 col-md-2 ">
+    <img src="./assets/150x150 (4)zone.png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (5).png"  style="width: 100%; height:200px;">
+   <img src="./assets/150x150 (1).png"  style="width: 100%; height:200px;">
+  </div>
+  <div class="col-6 col-md-2">
+    <img src="./assets/150x150 (3).png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (2).png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (2).png"  style="width: 100%; height:200px;">
+  </div>
+  <div class="col-12 col-md-3">
+    <h1 class="text-center text-white">Offers</h1>
+    <p class=" fs-3 text-center text-white">The Last Moment</p>
+    
+    <p  class=" fs-4 text-center text-white">From a warm gathering with family, to the sweet company of friends, enjoy 
+      the offers and discounts of up to 50%, great and ongoing offers on chalets, camps, farms, villas and apartments.
+
+    </p>
+  </div>
+  <div class="col-6 col-md-2 ">
+    <img src="./assets/150x150 (3).png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (6) (1).png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (4)zone.png"  style="width: 100%; height:200px;">
+
+  </div>
+  <div class="col-6 col-md-2">
+    <img src="./assets/150x150 (2).png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (4)zone.png"  style="width: 100%; height:200px;">
+    <img src="./assets/150x150 (1).png"  style="width: 100%; height:200px;">
+  </div>
+</div>
+</div>
+ </section>
+
+ <section>
+<div class="container">
+    <div class="row justify-content-center mt-4 w-100 m-0">
+    <div class="col-6 col-md-6">
+        <p class="text-bold text-center">SIGNATURE FEATURES</p>
+        <p class="fs-3 w3-blue">Masterful Design: A Showcase of
+            Quality and Craftsmanship
+</p>
+     </div>
+     </div>
+    </div>
+    <div class="container">
+     <div class="row w-100 m-0 mt-5">
+        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-8 mx-3">
+       <p class="fs-5 w3-blue">What do we provide for you?</p>
+        <p class="text-bold">Let us help you find the experience your looking for !</p>
+     </div>
+    
+  
+<div class="row mt-5 w-100 m-0">
+    
+        <div class="col-12 col-md-6">
+            <p class="fs-5 w3-blue">Book your home, instant and guaranteed booking</p>
+            <p class="text-bold">Your reservation is 100% guaranteed.</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <p class="fs-5 w3-blue"> guaranteed booking
+
+                Your </p>
+            <p class="text-bold">Multiple and secure payment methods</p>
+        </div>
+    </div>
+
+    <div class="row  w-100 m-0">
+    
+        <div class="col-12 col-md-6">
+            <p class="fs-5 w3-blue">Book your home, instant</p>
+            <p class="text-bold">Your reservation is 100% guaranteed.</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <p class="fs-5 w3-blue"> guaranteed booking
+
+                Your reservation </p>
+            <p class="text-bold">Multiple and secure payment methods</p>
+        </div>
+    </div>
+    
+<div class="row  w-100 m-0">
+    
+    <div class="col-12 col-md-6">
+        <p class="fs-5 w3-blue">Book your home, instant</p>
+        <p class="text-bold">Your reservation is 100% guaranteed.</p>
+    </div>
+    <div class="col-12 col-md-6">
+        <p class="fs-5 w3-blue"> guaranteed booking
+
+            Your reservation</p>
+        <p class="text-bold">Multiple and secure payment methods</p>
+    </div>
+</div>
+</div>  
+ <div class="col-12 col-md-6 align-text-center ">
+    <img src="./assets/zq.png"   style="width: 100%; height: 100%;">
+ </div>
+
+    </div>
+    </div>   
+ </section>
+ <section>
+
+ </section>
+ <section>
+<div class="container">
+    <div class="row w-100 m-0">
+        <div class="col-12 col-md-4 mt-1">
+            
+            <div class="card">
+            <div class="row">
+                <div class="col-9 col-md-9 ">
+                <div class="card-content">
+                    <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                    <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                </div>
+                </div>
+                <div class="col-3 col-md-3">
+                <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+            </div>
+        </div>
+            </div>
+        </div>
+    
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4 mt-1">
+            
+                <div class="card">
+                <div class="row">
+                    <div class="col-9 col-md-9 ">
+                    <div class="card-content">
+                        <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                        <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                    </div>
+                    </div>
+                    <div class="col-3 col-md-3">
+                    <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+                </div>
+            </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4 mt-1">
+            
+                <div class="card">
+                <div class="row">
+                    <div class="col-9 col-md-9">
+                    <div class="card-content">
+                        <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                        <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                    </div>
+                    </div>
+                    <div class="col-3 col-md-3">
+                    <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+                </div>
+            </div>
+                </div>
+         </div>
+    </div>
+            
+         
+        <div class="row mt-3 w-100 m-0">
+            <div class="col-12 col-md-4 mt-1">
+                
+                <div class="card">
+                <div class="row">
+                    <div class="col-9 col-md-9">
+                    <div class="card-content">
+                        <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                        <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                    </div>
+                    </div>
+                    <div class="col-3 col-md-3">
+                    <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+                </div>
+            </div>
+                </div>
+            </div>
+        
+                <!-- Card 2 -->
+                <div class="col-12 col-md-4 mt-1">
+                
+                    <div class="card">
+                    <div class="row">
+                        <div class="col-9 col-md-9 mt-1">
+                        <div class="card-content">
+                            <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                            <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                        </div>
+                        </div>
+                        <div class="col-3 col-md-3">
+                        <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+                    </div>
+                </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-12 col-md-4 mt-1">
+                
+                    <div class="card">
+                    <div class="row">
+                        <div class="col-9 col-md-9">
+                        <div class="card-content">
+                            <h6 class="card-title w3-blue">The Art of Web Design</h6>
+                            <p class="card-text">Our algorithm analyzes preferences and past bookings to offer personalized suggestions, helping users discover their ideal accommodations effortlessly.</p>
+                        </div>
+                        </div>
+                        <div class="col-3 col-md-3">
+                        <img src="./assets/carim.png" style="width: 100% ; height: 100px;" alt="">
+                    </div>
+                </div>
+                    </div>
+             </div>
+        </div>
+                
+                </div>
+ </section>
+<section>
+    <div class="container mt-4">
+        <div class="row w-100 m-0">
+                <div class="col-12 col-md-6">
+                    <p><strong> RANCH LIVING</strong></p>
+                    <h4 class="w3-blue">Green Living: Eco-Friendly Properties for Sustainable life style</h4>
+            <p class="">Discover eco-conscious ranch properties, blending sustainable design with natural beauty for a harmonious getaway.</p>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                  <img src="./assets/property_1.jpg" style="width: 100%;" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                <div class="col-6 col-md-6">
+                    <a href="">alsareef luxury hotel</a>
+                    <div class="icon-text">
+                        <i class="bi bi-geo-alt-fill icon-drak"></i>
+                        <span class="text-dark">zarqa</span>
+                      </div>
+                      <p>3 Bedrooms</p>
+                      200 SQft
+
+                </div>
+                <div class="col-6 col-md-6">
+                    <p>100
+ 
+                        JD</p>
+                        <p class="mt-3"> 3 Bathrooms</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-12 col-md-6 mt-4">
+              <img src="./assets/property_1.jpg" style="width: 100%;" alt="">
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row">
+            <div class="col-6 col-md-6">
+                <a href="">alsareef luxury hotel</a>
+                <div class="icon-text">
+                    <i class="bi bi-geo-alt-fill icon-drak"></i>
+                    <span class="text-dark">zarqa</span>
+                  </div>
+                  <p>3 Bedrooms</p>
+                  200 SQft
+
+            </div>
+            <div class="col-6 col-md-6">
+                <p>100
+
+                    JD</p>
+                    <p class="mt-3"> 3 Bathrooms</p>
+            </div>
+        </div>
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+            <img src="./assets/property_1.jpg" style="width: 100%;" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row">
+        <div class="col-6 col-md-6">
+            <a href="">alsareef luxury hotel</a>
+            <div class="icon-text">
+                <i class="bi bi-geo-alt-fill icon-drak"></i>
+                <span class="text-dark">zarqa</span>
+              </div>
+              <p>3 Bedrooms</p>
+              200 SQft
+
+        </div>
+        <div class="col-6 col-md-6">
+            <p>100
+
+                JD</p>
+                <p class="mt-3"> 3 Bathrooms</p>
+        </div>
+    </div>
+    </div>
+                </div>
+                
+        </div>
+        <div class="col-12 col-md-6">
+            <img src="./assets/main-map.png" style="width: 100%; height: 600px;" alt="">
+
+        </div>
+        </div>
+    </div>
+</section>
+<section>
+ <div class="container mt-4">
+  <div class="row w-100 m-0">
+  
+        <div class="col-12 col-md-4 text-center " >
+        <div class="cards">
+          <img src="./assets/city_mecca.jpg" style="height: 200; width: 100%;" alt="">
+          <p class="card-content">mecca</p>
+        </div>
+        </div>
+        <div class="col-12 col-md-4 text-center " >
+        <div class="cards">
+          <img src="./assets/city_cairo.jpg" style="width: 100%; height: 200;" alt="">
+          <p class="card-content">cairo</p>
+        </div>
+        </div>
+        <div class="col-12 col-md-4 text-center " >
+        <div class="cards">
+          <img src="./assets/city_ammman.jpg" style="width: 100% ;height: 200;" alt="">
+          <p class="card-content">Amman</p>
+        </div>
+        </div>
+       
+        
+      </div>
+    </div>
+
+    
+
+</section>
+ <div class="container py-4 mt-5 mb-5 conk ">
+
+ </div>
+<section class="mt-3">
+   <div class="container mt-5">
+    <div class="row mb-5 mt-5">
+        <div class="col-12 col-md-3">
+                <h1 class="text-center w3-blue">11+</h1>
+                <p class="text-center">A Big Selection of Countries</p>
+        </div>
+        <div class="col-12 col-md-3">
+            <h1 class="text-center w3-blue">11+</h1>
+            <p class="text-center">A Big Selection of Countries</p>
+    </div>
+    <div class="col-12 col-md-3">
+        <h1 class="text-center w3-blue">11+</h1>
+        <p class="text-center">A Big Selection of Countries</p>
+</div>
+<div class="col-12 col-md-3">
+    <h1 class="text-center w3-blue">11+</h1>
+    <p class="text-center">A Big Selection of Countries</p>
+</div>
+    </div>
+   </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row w-100 m-0">
+            <div class="col-12 col-md-6">
+                <img src="./assets/blog_d145WBvjNU.jpg"  style=" width: 100%; height: 300px;"alt="">
+                <p class="mt-5">Tranquil Haven: Maple Grove Chalet, Your Serene Escape in Nature
+                    Welcome to Maple Grove Chalet, where tranquility meets luxury amidst the serene beauty
+                     of nature. Tucked away in a secluded corner of the countryside,...</p>
+            </div>
+            <div class="col-12 col-md-6">
+      <div class="row w-100 m-0">
+        <div class="col-12 col-md-6">
+               
+                    <img src="./assets/blog_B5dhkWwkl9.jpg" style="width: 100%;" alt="">
+               
+            </div>
+            <div class="col-12 col-md-6">
+                <p>Property Image
+                    Escape to Cedar Crest Chalet: Your Luxurious Woodland Getaway
+                    Experience the ultimate in luxury and se..</p>
+            </div>
+        </div>
+        <div class="row w-100 m-0 mt-3">
+            <div class="col-12 col-md-6">
+                   
+                        <img src="./assets/blog_hhkwULteSx10.jpg" style="width: 100%;" alt="">
+                   
+                </div>
+                <div class="col-12 col-md-6">
+                    <p>Property Image
+                        Escape to Cedar Crest Chalet: Your Luxurious Woodland Getaway
+                        Experience the ultimate in luxury and se..</p>
+                </div>
+            </div>
+            <div class="row w-100 m-0 mt-3">
+                <div class="col-12 col-md-6">
+                       
+                            <img src="./assets/blog_B5dhkWwkl9.jpg" style="width: 100%;" alt="">
+                       
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Property Image
+                            Escape to Cedar Crest Chalet: Your Luxurious Woodland Getaway
+                            Experience the ultimate in luxury and se..</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container mt-5">
+        <div class="row w-100 m-0">
+            <div class="col-12 col-md-6">
+               <p><strong>CONTACT US</strong></p>
+               <h1 class="w3-blue">Get in Touch and Explore.</h1>
+            </div>
+            <div class="col-12 col-md-6">
+                <form>
+ 
+                     <p>Name</p>
+                      <input type="text" class="form-control" placeholder="Username">
+                      <div class="row mb-t">
+                        <div class="col-6 col-md-6">
+                        <p>phone</p>
+                        <input type="text" class="form-control" placeholder="Username">
+                      </div>
+                      <div class="col-6 col-md-6">
+                        <p>email</p>
+                        <input type="text" class="form-control" placeholder="eamil@">
+                      </div>
+                      <p>title</p>
+                      <input type="text" class="form-control" placeholder="">
+                      <p>message</p>
+                      <input type="text-area" class="form-control" placeholder="Username">
+                      <button type="button" class="btn btn-outline-success">send amessage</button>
+                    </div>
+                
+                      
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+
+
+</section>
+<hr>
+<section>
+    <div class="container">
+        <div class="row w-100 m-0">
+            <div class="col-12 col-md-4">
+                <p class="fs-3">Zoneme</p>
+                <p>Where Every Stay Tells a Story.</p>
+                   <p class="fs-3">Follow us on social media  </p>
+                   <i  class="bi bi-facebook icon-large  w3-se " style="padding: 3%; "></i>
+           
+                   <i class="bi bi-whatsapp icon-large w3-se" style="padding: 3%;"></i>
+           
+            <i class="bi bi-instagram icon-large w3-se "  style="padding: 3%;"></i>
+            <p>Download Our App</p>
+                
+            </div>
+            <div class="col-12 col-md-4">
+                <p class="fs-3">Want to rent your property?</p>
+                <p>Come join us and become a part of our family..</p>
+                <button type="button" class="btn btn-outline-success">send amessage</button>
+                <button type="button" class="btn btn-outline-success">send amessage</button>
+                <p class="fs-3">Pages</p>
+                <a href="" class="text-dark">blog and news</a><br>
+                <a href="" class=" text-dark">faq</a><br>
+                <a href="" class="text-dark ">our agent</a><br>
+
+
+                
+            </div>
+            <div class="col-12 col-md-4">
+                <p class="fs-3">Want to rent your property?</p>
+                <p>Come join us and become a part of our family..</p>
+                <button type="button" class="btn btn-outline-success">send amessage</button>
+                <button type="button" class="btn btn-outline-success">send amessage</button>
+                <p class="fs-3">Pages</p>
+                <a href="">blog and news</a><br>
+                <a href="">faq</a><br>
+                <a href="">our agent</a><br>
+
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+<hr> 
+<div class="container">
+<div class="row w-100 m-0">
+    <p class="text-center">Copyright © 2024 ZoneMe. All Rights Reserved.</p>
+<p class="text-center">Powered by<a class="text-dark">Codexal</a></p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  let activeIndex = 0;
+const cards = document.querySelectorAll('.card');
+
+function setActiveIndex(index) {
+    cards[activeIndex].classList.remove('active');
+    
+    activeIndex = index;
+    
+    cards[activeIndex].classList.add('active');
+}
+
+function goToPrevious() {
+    setActiveIndex((activeIndex - 1 + cards.length) % cards.length);
+}
+
+function goToNext() {
+    setActiveIndex((activeIndex + 1) % cards.length);
+}
+
+// Initialize the first card as active
+setActiveIndex(0);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+const images = document.querySelectorAll('.carousel-item');
+const dots = document.querySelectorAll('.btn-secondary');
+
+function setActiveIndex(index) {
+    images[activeIndex].classList.remove('active');
+    dots[activeIndex].classList.remove('active');
+    
+    activeIndex = index;
+    
+    images[activeIndex].classList.add('active');
+    dots[activeIndex].classList.add('active');
+}
+
+function goToPrevious() {
+    setActiveIndex((activeIndex - 1 + images.length) % images.length);
+}
+
+function goToNext() {
+    setActiveIndex((activeIndex + 1) % images.length);
+}
+</script>
+
+<script>
+  const carousel = document.querySelector('.carousel');
+
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+  const dotsContainer = document.querySelector('.dots');
+
+  const cardsPerSlide = 3;
+  let currentIndex = 0;
+  const totalSlides = Math.ceil(cards.length / cardsPerSlide);
+
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateCarousel() {
+    const offset = currentIndex * (100 / cardsPerSlide);
+    carousel.style.transform = `translateX(-${offset}%)`;
+    
+    // Update dots
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  }
+
+  prevButton.addEventListener('click', prevSlide);
+  nextButton.addEventListener('click', nextSlide);
+
+  // Optional: Add keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+</script>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+</html>
